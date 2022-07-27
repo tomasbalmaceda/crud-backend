@@ -1,7 +1,12 @@
-import { model } from "mongoose";
+import { model, Schema } from "mongoose";
 
-import { IUser } from "../Interface/userInterface";
+import { IUser } from "../interface/userInterface";
 
-import { userSchema } from "../Schema/userSchema";
+export const userSchema = new Schema<IUser>({
+  fullName: { type: String, required: true },
+  address: { type: String, required: true },
+  phoneNumber: { type: String, required: true },
+  email: { type: String, required: true },
+});
 
 export const User = model<IUser>("User", userSchema);
