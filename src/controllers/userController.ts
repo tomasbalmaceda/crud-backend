@@ -18,11 +18,11 @@ const UserController = {
       const user = await User.findOne({ _id: id });
 
       if (!user) {
-        res.status(422).json({ error: "User not found" });
+        res.status(404).json({ error: "User not found" });
         return;
       }
 
-      res.status(200).json(user);
+      res.status(201).json(user);
     } catch (err) {
       res.status(500).json({ error: err });
     }
@@ -80,7 +80,7 @@ const UserController = {
       const updatedUser = await User.updateOne({ _id: id }, user);
 
       if (updatedUser.matchedCount === 0) {
-        res.status(422).json({ error: "User not found" });
+        res.status(404).json({ error: "User not found" });
         return;
       }
 
@@ -96,7 +96,7 @@ const UserController = {
     const user = await User.findOne({ _id: id });
 
     if (!user) {
-      res.status(422).json({ error: "User not found" });
+      res.status(404).json({ error: "User not found" });
       return;
     }
 
